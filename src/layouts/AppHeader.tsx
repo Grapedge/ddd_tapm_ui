@@ -8,7 +8,12 @@ const AppHeader: React.FC = () => {
   const { uiStore } = useStore();
   return (
     <Layout.Header className="app-header">
-      <div className="app-title">{uiStore.pageTitle}</div>
+      <img
+        src="https://www.sc.sdu.edu.cn/images/favicon.ico"
+        alt="SDU"
+        className="app-header__logo"
+      />
+      <div className="app-header__title">{uiStore.pageTitle}</div>
       <UserDropdownMenu />
     </Layout.Header>
   );

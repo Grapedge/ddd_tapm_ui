@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@ant-design/pro-form": "^1.27.1",
     "@ant-design/pro-list": "^1.8.2",
     "@ant-design/pro-table": "^2.39.2",
