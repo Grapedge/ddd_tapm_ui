@@ -1,4 +1,4 @@
-import { Button, Col, PageHeader, Row } from 'antd';
+import { Button, PageHeader } from 'antd';
 import classes from './CodeRepositories.module.scss';
 import BindRepoistory from './components/BindRepoistory';
 import CodeRepoCard from './components/CodeRepoCard';
