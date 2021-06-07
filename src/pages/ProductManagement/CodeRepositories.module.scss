@@ -1,0 +1,17 @@
+.container {
+  padding: 0 24px 32px 24px;
+  .repos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 1rem;
+    .codeRepo {
+      width: 100%;
+      .title {
+        color: #616161;
+      }
+      .description {
+        width: 100%;
+      }
+    }
+  }
+}

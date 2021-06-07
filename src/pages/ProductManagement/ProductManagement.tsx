@@ -1,6 +1,7 @@
 import { AppLayout } from '@/layouts';
 import { observer } from 'mobx-react-lite';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router';
+import CodeRepositories from './CodeRepositories';
 import ProductMenu from './ProductManagementMenu';
 import ProductOverview from './ProductOverview';
 
@@ -19,7 +20,7 @@ const Product: React.FC = () => {
           冲刺
         </Route>
         <Route path={`${url}/repos`} exact>
-          代码仓库
+          <CodeRepositories />
         </Route>
         <Route path={`${url}/wiki`} exact>
           Wiki

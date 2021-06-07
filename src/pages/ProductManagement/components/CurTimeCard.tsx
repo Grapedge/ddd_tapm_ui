@@ -16,9 +16,6 @@ const CurTimeCard = () => {
     return () => clearInterval(timer);
   }, []);
 
-  React.useEffect(() => {
-    return;
-  }, []);
   return (
     <Card>
       <Statistic title="当前时间" value={curTime} />
