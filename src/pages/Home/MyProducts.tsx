@@ -1,7 +1,7 @@
 import { Product } from '@/models/Product';
 import ProList from '@ant-design/pro-list';
 import { Alert, PageHeader, Tag } from 'antd';
-import { Link } from 'react-router-dom';
+import { generatePath, Link } from 'react-router-dom';
 import CreateProduct from './components/CreateProduct';
 import classes from './MyProducts.module.scss';
 
@@ -39,7 +39,19 @@ const MyProducts: React.FC = () => {
           showExtra="hover"
           metas={{
             title: {
-              dataIndex: 'name',
+              render: (_dom, entity) => {
+                console.log(_dom, entity);
+                return (
+                  <Link
+                    to={generatePath('/p/:pid', { pid: entity.id })}
+                    style={{
+                      color: '#616161',
+                    }}
+                  >
+                    {entity.name}
+                  </Link>
+                );
+              },
             },
             avatar: {
               dataIndex: 'logo',
@@ -55,7 +67,7 @@ const MyProducts: React.FC = () => {
             actions: {
               render: (_, entity) => [
                 <Link
-                  to={`/product/${encodeURIComponent(entity.id)}`}
+                  to={generatePath('/p/:pid', { pid: entity.id })}
                   target="_blank"
                   key="product"
                 >

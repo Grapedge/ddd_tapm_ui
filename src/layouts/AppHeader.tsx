@@ -3,6 +3,7 @@ import { Layout } from 'antd';
 import { observer } from 'mobx-react-lite';
 import { useStore } from '@/hooks/useStore';
 import UserDropdownMenu from './UserDropdownMenu';
+import { Link } from 'react-router-dom';
 
 const AppHeader: React.FC = () => {
   const { uiStore } = useStore();
@@ -13,7 +14,9 @@ const AppHeader: React.FC = () => {
         alt="SDU"
         className="app-header__logo"
       />
-      <div className="app-header__title">{uiStore.pageTitle}</div>
+      <Link to="/" className="app-header__title">
+        {uiStore.pageTitle}
+      </Link>
       <UserDropdownMenu />
     </Layout.Header>
   );
