@@ -1,30 +1,17 @@
+import { Product } from '@/models/Product';
 import ProList from '@ant-design/pro-list';
-import { Alert, Button, PageHeader, Space, Tag } from 'antd';
+import { Alert, PageHeader, Tag } from 'antd';
+import { Link } from 'react-router-dom';
+import CreateProduct from './components/CreateProduct';
+import classes from './MyProducts.module.scss';
 
 const dataSource = [
   {
-    name: '语雀的天空',
-    image:
-      'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-    desc: '我是一条测试的描述',
-  },
-  {
-    name: 'Ant Design',
-    image:
-      'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-    desc: '我是一条测试的描述',
-  },
-  {
-    name: '蚂蚁金服体验科技',
-    image:
-      'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-    desc: '我是一条测试的描述',
-  },
-  {
-    name: 'TechUI',
-    image:
-      'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
-    desc: '我是一条测试的描述',
+    id: '2333',
+    name: '我的产品',
+    logo: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
+    description: '我是一条产品的描述',
+    productOwnerId: '2019',
   },
 ];
 
@@ -32,11 +19,7 @@ const MyProducts: React.FC = () => {
   return (
     <>
       <PageHeader title="我的项目" />
-      <div
-        style={{
-          margin: '0 32px',
-        }}
-      >
+      <div className={classes.container}>
         <Alert
           message="还没有项目？"
           description="点击右下方新建按钮，快速创建一个项目！"
@@ -44,79 +27,41 @@ const MyProducts: React.FC = () => {
           showIcon
         />
         <ProList<any>
+          rowKey="id"
           pagination={{
             defaultPageSize: 10,
             showSizeChanger: true,
           }}
-          toolBarRender={() => {
-            return [
-              <Button key="add" type="primary">
-                新建
-              </Button>,
-            ];
-          }}
-          onRow={(record: any) => {
-            return {
-              onMouseEnter: () => {
-                console.log(record);
-              },
-              onClick: () => {
-                console.log(record);
-              },
-            };
-          }}
-          rowKey="name"
-          headerTitle="基础列表"
-          tooltip="基础列表的配置"
+          toolBarRender={() => [<CreateProduct key="create" />]}
+          headerTitle="我参与的"
+          tooltip="我参与的所有项目"
           dataSource={dataSource}
-          showActions="hover"
+          // showActions="hover"
           showExtra="hover"
           metas={{
             title: {
               dataIndex: 'name',
             },
             avatar: {
-              dataIndex: 'image',
+              dataIndex: 'logo',
             },
             description: {
-              dataIndex: 'desc',
+              dataIndex: 'description',
             },
             subTitle: {
-              render: () => {
-                return (
-                  <Space size={0}>
-                    <Tag color="blue">Ant Design</Tag>
-                    <Tag color="#5BD8A6">TechUI</Tag>
-                  </Space>
-                );
+              render: (_) => {
+                return <Tag color="#5BD8A6">我管理的</Tag>;
               },
             },
             actions: {
-              render: (text, row) => [
-                <a
-                  href={row.html_url}
+              render: (_, entity) => [
+                <Link
+                  to={`/product/${encodeURIComponent(entity.id)}`}
                   target="_blank"
-                  rel="noopener noreferrer"
-                  key="link"
-                >
-                  链路
-                </a>,
-                <a
-                  href={row.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key="warning"
-                >
-                  报警
-                </a>,
-                <a
-                  href={row.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key="view"
+                  key="product"
                 >
                   查看
-                </a>,
+                </Link>,
               ],
             },
           }}
