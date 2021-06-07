@@ -1,9 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { Home } from './pages/Home';
 import { RootStore } from './stores/RootStore';
 import { StoreProvider } from './stores/StoreContext';
 import { Error404 } from './pages/Error';
+import { ProductManagement } from './pages/ProductManagement';
 import './App.scss';
 
 const rootStore = new RootStore();
@@ -13,12 +19,20 @@ const App: React.FC = () => {
     <StoreProvider value={rootStore}>
       <Router>
         <Switch>
-          <Route path="/product">Product</Route>
-          <Route path={['/', '/workbench']} exact>
+          <Route path="/p/:pid">
+            <ProductManagement />
+          </Route>
+          <Route path="/home">
             <Home />
           </Route>
-          <Route path="/">
+          <Route path="/404" exact>
             <Error404 />
+          </Route>
+          <Route path="/" exact>
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/">
+            <Redirect to="/404" />
           </Route>
         </Switch>
       </Router>
