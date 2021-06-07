@@ -6,3 +6,41 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.app {
+  min-height: 100vh;
+
+  .app-header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 0 2px #9e9e9e;
+
+    &__logo {
+      width: 28px;
+      height: 28px;
+      margin-right: 6px;
+    }
+
+    &__title {
+      flex: 1;
+    }
+
+    &__user-info {
+      color: #616161;
+    }
+
+    &__sign-in {
+    }
+  }
+
+  .app-content {
+    background-color: #ffffff;
+  }
+
+  .app-sider {
+    border-right: 1px solid #eeeeee;
+  }
+}

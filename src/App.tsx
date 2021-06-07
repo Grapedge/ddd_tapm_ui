@@ -10,7 +10,6 @@ import { RootStore } from './stores/RootStore';
 import { StoreProvider } from './stores/StoreContext';
 import { Error404 } from './pages/Error';
 import { ProductManagement } from './pages/ProductManagement';
-import './App.scss';
 
 const rootStore = new RootStore();
 
