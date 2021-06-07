@@ -2,6 +2,7 @@ import { AppLayout } from '@/layouts';
 import { observer } from 'mobx-react-lite';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router';
 import ProductMenu from './ProductManagementMenu';
+import ProductOverview from './ProductOverview';
 
 const Product: React.FC = () => {
   const { url } = useRouteMatch();
@@ -9,7 +10,7 @@ const Product: React.FC = () => {
     <AppLayout sider={<ProductMenu />}>
       <Switch>
         <Route path={`${url}`} exact>
-          我的项目
+          <ProductOverview />
         </Route>
         <Route path={`${url}/backlog`} exact>
           待办事项
