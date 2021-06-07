@@ -30,7 +30,6 @@ const MyProducts: React.FC = () => {
           rowKey="id"
           pagination={{
             defaultPageSize: 10,
-            showSizeChanger: true,
           }}
           toolBarRender={() => [<CreateProduct key="create" />]}
           headerTitle="我参与的"

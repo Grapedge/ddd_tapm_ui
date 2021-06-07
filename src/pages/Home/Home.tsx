@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { Route, Switch } from 'react-router';
 import HomeMenu from './HomeMenu';
 import MyProducts from './MyProducts';
+import Workbench from './Workbench';
 
 const Home: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ const Home: React.FC = () => {
           <MyProducts />
         </Route>
         <Route path="/workbench" exact>
-          工作台
+          <Workbench />
         </Route>
       </Switch>
     </AppLayout>
